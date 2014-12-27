@@ -6,8 +6,8 @@ var bundle = require('../lib/bundle');
 module.exports = function(grunt) {
 
     grunt.registerMultiTask(
-        'autoBundles',
-        'TODO desc',
+        'autobundles',
+        'Automated shared bundles for grunt-contrib-requirejs builds.',
         function() {
 
             // Get the target for this task. It should correspond to a target
