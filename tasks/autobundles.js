@@ -2,6 +2,8 @@
 
 var _ = require('lodash');
 var bundle = require('../lib/bundle');
+var config = require('../lib/config');
+var path = require('path');
 
 module.exports = function(grunt) {
 
@@ -42,8 +44,18 @@ module.exports = function(grunt) {
                     // into bundles.
                     var duplicates = require('rjs-build-analysis').duplicates(output);
 
-                    // Calculate bundles from the duplicates.
-                    var result = bundle.calculateBundles(origRequirejsConfig.modules, duplicates);
+                    // Read the config as set through `requirejs.config()`.
+                    var loaderConfigPath = path.normalize(
+                        path.join(
+                            origRequirejsConfig.appDir,
+                            origRequirejsConfig.baseUrl,
+                            options.requireConfigModule + '.js'
+                        )
+                    );
+                    var loaderConfig = config.readLoaderConfig(loaderConfigPath);
+
+                    // Calculate bundles from the duplicates.e
+                    var result = bundle.calculateBundles(origRequirejsConfig.modules, duplicates, loaderConfig);
 
                     // We're going to setup the config for an actual requirejs
                     // task, starting with the original config.
