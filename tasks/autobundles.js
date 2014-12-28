@@ -54,7 +54,7 @@ module.exports = function(grunt) {
                     );
                     var loaderConfig = config.readLoaderConfig(loaderConfigPath);
 
-                    // Calculate bundles from the duplicates.e
+                    // Calculate bundles from the duplicates.
                     var result = bundle.calculateBundles(origRequirejsConfig.modules, duplicates, loaderConfig);
 
                     // We're going to setup the config for an actual requirejs
