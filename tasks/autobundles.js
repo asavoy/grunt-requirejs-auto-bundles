@@ -65,8 +65,9 @@ module.exports = function(grunt) {
                     actualRequirejsConfig.modules = result.modules;
 
                     // Generate the bundles config script.
+                    var bundleDependencies = _.mapValues(result.bundles, 'dependencies');
                     var bundleConfigScript = (
-                        'requirejs.config({bundles: ' + JSON.stringify(result.bundles) + '});\n\n'
+                        'requirejs.config({bundles: ' + JSON.stringify(bundleDependencies) + '});\n\n'
                     );
 
                     // Inject the bundles config script into the config module.
