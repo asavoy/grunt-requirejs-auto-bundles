@@ -70,14 +70,14 @@ module.exports = function(grunt) {
                     );
 
                     // Inject the bundles config script into the config module.
-                    var foundRequirejsConfig = false
+                    var foundRequirejsConfig = false;
                     _.forEach(actualRequirejsConfig.modules, function(module) {
-                        if (module.name == options.requireConfigModule) {
+                        if (module.name === options.requireConfigModule) {
                             foundRequirejsConfig = true;
                             if (module.override && module.override.wrap) {
                                 grunt.fail.warn('Cannot add wrap: options to ' +
                                     'the requirejs config module, because ' +
-                                    'they have already been defined.')
+                                    'they have already been defined.');
                             }
                             if (!module.override) {
                                 module.override = {};
