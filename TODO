@@ -1,5 +1,3 @@
-- Support options.maxBundles to merge bundles so that no main requires too many
-  requests.
 - Redundant: options.requireConfigModule should be replaced with
   requirejs.options.mainConfigFile.
 - Redundant: Don't require the require-config module to be defined in
