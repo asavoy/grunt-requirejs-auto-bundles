@@ -18,6 +18,9 @@ module.exports = function(grunt) {
 
             // Merge task-specific and/or target-specific options with these defaults.
             var options = this.options({
+                // Combine bundles until we reach this maximum number of
+                // bundles that would be requested by any main module.
+                maxBundles: 3,
                 // The module ID for the JS file that calls
                 // `requirejs.config({ ... })`.
                 requireConfigModule: 'require-config'
@@ -55,7 +58,9 @@ module.exports = function(grunt) {
                     var loaderConfig = config.readLoaderConfig(loaderConfigPath);
 
                     // Calculate bundles from the duplicates.
-                    var result = bundle.calculateBundles(origRequirejsConfig.modules, duplicates, loaderConfig);
+                    var result = bundle.calculateBundles(
+                        origRequirejsConfig.modules, duplicates, loaderConfig, options.maxBundles
+                    );
 
                     // We're going to setup the config for an actual requirejs
                     // task, starting with the original config.
