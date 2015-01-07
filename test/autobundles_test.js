@@ -27,7 +27,7 @@ exports.autobundles = {
     done();
   },
   simple: function(test) {
-    test.expect(3);
+    test.expect(2);
 
     test.equal(
         grunt.file.read('tmp/simple/build.txt'),
@@ -39,12 +39,6 @@ exports.autobundles = {
         grunt.file.read('tmp/simple/require-config.js'),
         grunt.file.read('test/expected/simple/require-config.js'),
         'Config module should have bundles config injected.'
-    );
-
-    test.equal(
-        grunt.file.read('tmp/simple/main_a_js-main_b-cdf161.js'),
-        grunt.file.read('test/expected/simple/main_a_js-main_b-cdf161.js'),
-        'Shared bundle does not have expected contents.'
     );
 
     test.done();
