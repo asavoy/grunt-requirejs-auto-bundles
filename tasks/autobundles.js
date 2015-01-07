@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var bundle = require('../lib/bundle');
 var config = require('../lib/config');
+var factorise = require('../lib/factorise');
 var path = require('path');
 
 module.exports = function(grunt) {
@@ -58,7 +59,7 @@ module.exports = function(grunt) {
                     var loaderConfig = config.readLoaderConfig(loaderConfigPath);
 
                     // Calculate bundles from the duplicates.
-                    var result = bundle.calculateBundles(
+                    var result = factorise.factoriseBundles(
                         origRequirejsConfig.modules, duplicates, loaderConfig, options.maxBundles
                     );
 
