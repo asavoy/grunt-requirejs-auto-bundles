@@ -42,5 +42,39 @@ exports.autobundles = {
     );
 
     test.done();
+  },
+  maxBundles1: function(test) {
+    test.expect(2);
+
+    test.equal(
+        grunt.file.read('tmp/maxBundles1/build.txt'),
+        grunt.file.read('test/expected/maxBundles1/build.txt'),
+        'Modules not optimized with shared bundles as expected.'
+    );
+
+    test.equal(
+        grunt.file.read('tmp/maxBundles1/require-config.js'),
+        grunt.file.read('test/expected/maxBundles1/require-config.js'),
+        'Config module should have bundles config injected.'
+    );
+
+    test.done();
+  },
+  maxBundles2: function(test) {
+    test.expect(2);
+
+    test.equal(
+        grunt.file.read('tmp/maxBundles2/build.txt'),
+        grunt.file.read('test/expected/maxBundles2/build.txt'),
+        'Modules not optimized with shared bundles as expected.'
+    );
+
+    test.equal(
+        grunt.file.read('tmp/maxBundles2/require-config.js'),
+        grunt.file.read('test/expected/maxBundles2/require-config.js'),
+        'Config module should have bundles config injected.'
+    );
+
+    test.done();
   }
 };

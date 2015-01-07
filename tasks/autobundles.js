@@ -3,6 +3,7 @@
 var _ = require('lodash');
 var bundle = require('../lib/bundle');
 var config = require('../lib/config');
+var factorise = require('../lib/factorise');
 var path = require('path');
 
 module.exports = function(grunt) {
@@ -18,6 +19,9 @@ module.exports = function(grunt) {
 
             // Merge task-specific and/or target-specific options with these defaults.
             var options = this.options({
+                // Combine bundles until we reach this maximum number of
+                // bundles that would be requested by any main module.
+                maxBundles: 3,
                 // The module ID for the JS file that calls
                 // `requirejs.config({ ... })`.
                 requireConfigModule: 'require-config'
@@ -55,7 +59,9 @@ module.exports = function(grunt) {
                     var loaderConfig = config.readLoaderConfig(loaderConfigPath);
 
                     // Calculate bundles from the duplicates.
-                    var result = bundle.calculateBundles(origRequirejsConfig.modules, duplicates, loaderConfig);
+                    var result = factorise.factoriseBundles(
+                        origRequirejsConfig.modules, duplicates, loaderConfig, options.maxBundles
+                    );
 
                     // We're going to setup the config for an actual requirejs
                     // task, starting with the original config.
@@ -65,8 +71,9 @@ module.exports = function(grunt) {
                     actualRequirejsConfig.modules = result.modules;
 
                     // Generate the bundles config script.
+                    var bundleDependencies = _.mapValues(result.bundles, 'dependencies');
                     var bundleConfigScript = (
-                        'requirejs.config({bundles: ' + JSON.stringify(result.bundles) + '});\n\n'
+                        'requirejs.config({bundles: ' + JSON.stringify(bundleDependencies) + '});\n\n'
                     );
 
                     // Inject the bundles config script into the config module.

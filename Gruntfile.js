@@ -32,6 +32,12 @@ module.exports = function (grunt) {
         autobundles: {
             simple: {
                 options: {}
+            },
+            maxBundles1: {
+                options: { maxBundles: 1 }
+            },
+            maxBundles2: {
+                options: { maxBundles: 2 }
             }
         },
         requirejs: {
@@ -47,6 +53,39 @@ module.exports = function (grunt) {
                         { name: 'require-config' },
                         { name: 'main_a' },
                         { name: 'main_b' }
+                    ]
+                }
+            },
+            maxBundles1: {
+                options: {
+                    appDir: 'test/fixtures/maxBundles1',
+                    baseUrl: './',
+                    dir: 'tmp/maxBundles1',
+                    mainConfigFile: 'test/fixtures/maxBundles1/require-config.js',
+                    optimize: 'none',
+                    keepBuildDir: false,
+                    modules: [
+                        { name: 'require-config' },
+                        { name: 'main_a' },
+                        { name: 'main_b' },
+                        { name: 'main_c' }
+                    ]
+                }
+            },
+            maxBundles2: {
+                options: {
+                    appDir: 'test/fixtures/maxBundles2',
+                    baseUrl: './',
+                    dir: 'tmp/maxBundles2',
+                    mainConfigFile: 'test/fixtures/maxBundles2/require-config.js',
+                    optimize: 'none',
+                    keepBuildDir: false,
+                    modules: [
+                        { name: 'require-config' },
+                        { name: 'main_a' },
+                        { name: 'main_b' },
+                        { name: 'main_c' },
+                        { name: 'main_d' }
                     ]
                 }
             }

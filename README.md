@@ -50,6 +50,7 @@ data object passed into `grunt.initConfig()`.
 grunt.initConfig({
   autobundles: {
     your_target: {
+      maxBundles: 3,
       requireConfigModule: 'require-config'
     },
   },
@@ -78,6 +79,15 @@ grunt.registerTask('build', ['autobundles', 'requirejs']);
 
 
 ### Options
+
+#### options.maxBundles
+Type: `Number`
+Default value: `3`
+
+The maximum number of bundles that any main module should have to fetch. A
+smaller number will mean fewer HTTP requests, but larger total download size
+due to bundling uncommon modules. You may want to test different values to
+find the right balance for your project.
 
 #### options.requireConfigModule
 Type: `String`
