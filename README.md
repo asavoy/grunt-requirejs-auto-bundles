@@ -93,7 +93,8 @@ find the right balance for your project.
 Type: `String`
 Default value: `'require-config'`
 
-The module ID for the JS file that calls `requirejs.config({ ... })`.
+The module ID for the JS file that calls `requirejs.config({ ... })`. This
+should match an entry in the `modules:` task config for `requirejs`.
 
 
 ### Usage Examples
