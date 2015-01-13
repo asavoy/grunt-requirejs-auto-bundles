@@ -1,7 +1,7 @@
 {
   "name": "grunt-requirejs-auto-bundles",
   "description": "Automated shared bundles for grunt-contrib-requirejs builds.",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "https://github.com/asavoy/grunt-requirejs-auto-bundles",
   "author": {
     "name": "Alvin Savoy",
