@@ -1,0 +1,25 @@
+{
+  "name": "grunt-requirejs-auto-bundles",
+  "version": "0.3.0",
+  "homepage": "https://github.com/asavoy/grunt-requirejs-auto-bundles",
+  "authors": [
+    "Alvin Savoy <asavoy@users.noreply.github.com>"
+  ],
+  "description": "Automated shared bundles for grunt-contrib-requirejs builds.",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "gruntplugin",
+    "requirejs",
+    "bundles"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
